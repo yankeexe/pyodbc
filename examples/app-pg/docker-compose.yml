@@ -11,10 +11,13 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - .env      
-      
+      - .env
+
   app:
-    build: .
+    build:
+      context: .
+      args:
+        - DATA_COUNT=${DATA_COUNT}
     depends_on:
       - postgres
     environment:
